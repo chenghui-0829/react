@@ -2,7 +2,8 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 class Mine extends React.Component {
@@ -10,7 +11,7 @@ class Mine extends React.Component {
         tabBarLabel: '我的',
         tabBarIcon: ({focused}) => (
             <Image
-                source={focused ? require('../static/img/menu_mine_icon.png') : require('../static/img/menu_mine_select_icon.png')}
+                source={focused ? require('../static/img/menu_mine_select_icon.png') : require('../static/img/menu_mine_icon.png')}
                 style={{width: 26, height: 26}}/>
         )
     };

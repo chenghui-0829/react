@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {TabNavigator} from "react-navigation";
+import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 
 import HomePage from './page/Home';
 import OpenPage from './page/Open';
 import MinePage from './page/Mine';
 
-export const TabNav = TabNavigator(
+export const TabNav = createBottomTabNavigator(
     {
         Home: {
             screen: HomePage,
@@ -21,7 +21,7 @@ export const TabNav = TabNavigator(
     {
         tabBarOptions: {
             //当前选中的tab bar的文本颜色和图标颜色
-            activeTintColor: '#4BC1D2',
+            activeTintColor: '#ff0000',
             //当前未选中的tab bar的文本颜色和图标颜色
             inactiveTintColor: '#000',
             //是否显示tab bar的图标，默认是false
@@ -51,7 +51,7 @@ export const TabNav = TabNavigator(
                 height: 45
             },
             //tab 页指示符的样式 (tab页下面的一条线).
-            indicatorStyle: {height: 0},
+            indicatorStyle: {height: 1},
         },
         //tab bar的位置, 可选值： 'top' or 'bottom'
         tabBarPosition: 'bottom',
@@ -65,3 +65,4 @@ export const TabNav = TabNavigator(
         backBehavior: 'none',
         initialRouteName: 'Home',
     });
+export default createAppContainer(TabNav);

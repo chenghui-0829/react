@@ -2,7 +2,8 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 class Open extends React.Component {
@@ -10,7 +11,7 @@ class Open extends React.Component {
         tabBarLabel: '开奖',
         tabBarIcon: ({focused}) => (
             <Image
-                source={focused ? require('../static/img/menu_open_icon.png') : require('../static/img/menu_open_select_icon.png')}
+                source={focused ? require('../static/img/menu_open_select_icon.png') : require('../static/img/menu_open_icon.png')}
                 style={{width: 26, height: 26}}/>
         )
     };

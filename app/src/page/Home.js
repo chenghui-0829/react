@@ -2,7 +2,8 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 class Home extends React.Component {
@@ -11,7 +12,7 @@ class Home extends React.Component {
         tabBarLabel: '首页',
         tabBarIcon: ({focused}) => (
             <Image
-                source={focused ? require('../static/img/menu_home_icon.png') : require('../static/img/menu_home_select_icon.png')}
+                source={focused ? require('../static/img/menu_home_select_icon.png') : require('../static/img/menu_home_icon.png')}
                 style={{width: 26, height: 26}}/>
         )
     };
