@@ -6,6 +6,16 @@ import {
 } from 'react-native';
 
 class Home extends React.Component {
+
+    static navigationOptions = {
+        tabBarLabel: '首页',
+        tabBarIcon: ({focused}) => (
+            <Image
+                source={focused ? require('../static/img/menu_home_icon.png') : require('../static/img/menu_home_select_icon.png')}
+                style={{width: 26, height: 26}}/>
+        )
+    };
+
     constructor(props) {
         super(props);
         this.state = {}
@@ -13,10 +23,19 @@ class Home extends React.Component {
 
     render() {
         return (
-            <h2>首页</h2>
+            <View style={styles.container}>
+                <Text>这是首页</Text>
+            </View>
         );
     }
 }
 
-const styles = StyleSheet.create({});
-export default;
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+    }
+});
+export default Home;
