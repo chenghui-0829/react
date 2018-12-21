@@ -12,7 +12,7 @@ class Mine extends React.Component {
         tabBarIcon: ({focused}) => (
             <Image
                 source={focused ? require('../static/img/menu_mine_select_icon.png') : require('../static/img/menu_mine_icon.png')}
-                style={{width: 26, height: 26}}/>
+                style={{width: 20, height: 20}}/>
         )
     };
 

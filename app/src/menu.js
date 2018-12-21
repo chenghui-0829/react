@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation';
 
 import HomePage from './page/Home';
 import OpenPage from './page/Open';
@@ -17,7 +17,6 @@ export const TabNav = createBottomTabNavigator(
             screen: MinePage,
         }
     },
-
     {
         tabBarOptions: {
             //当前选中的tab bar的文本颜色和图标颜色
@@ -37,21 +36,17 @@ export const TabNav = createBottomTabNavigator(
             //tab bar的样式
             style: {
                 backgroundColor: '#fff',
-                paddingBottom: 1,
-                borderTopWidth: 0.2,
-                paddingTop: 1,
+                borderTopWidth: 0.5,
+                paddingTop: 5,
                 borderTopColor: '#ccc',
             },
             //tab bar的文本样式
             labelStyle: {
-                fontSize: 11,
-                margin: 1
+                fontSize: 10,
             },
             tabStyle: {
                 height: 45
             },
-            //tab 页指示符的样式 (tab页下面的一条线).
-            indicatorStyle: {height: 1},
         },
         //tab bar的位置, 可选值： 'top' or 'bottom'
         tabBarPosition: 'bottom',
@@ -65,4 +60,22 @@ export const TabNav = createBottomTabNavigator(
         backBehavior: 'none',
         initialRouteName: 'Home',
     });
-export default createAppContainer(TabNav);
+
+TabNav.navigationOptions = ({navigation}) => {
+
+    const {routeName} = navigation.state.routes[navigation.state.index];
+    // You can do whatever you like here to pick the title based on the route name
+    let headerTitle = "";
+    if (routeName === "Home") {
+        headerTitle = "首页"
+    } else if (routeName === "Open") {
+        headerTitle = "开奖"
+    } else if (routeName === "Mine") {
+        headerTitle = "我的"
+    }
+    return {
+        headerTitle,
+    };
+};
+
+export default TabNav;

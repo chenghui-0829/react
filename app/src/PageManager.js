@@ -1,12 +1,19 @@
 import React from 'react';
-import {StackNavigator} from 'react-navigation';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {TabNav} from "./menu";
 
-const App = StackNavigator({
+const App = createStackNavigator({
         Main: {
             screen: TabNav,
             navigationOptions: ({navigation}) => ({
-                header: null
+                headerStyle: {
+                    backgroundColor: "#ff0000",
+                },
+                headerTitleStyle: {
+                    flex: 1,
+                    textAlign: 'center',
+                    color: "#fff"
+                }
             })
         }
     },
@@ -15,4 +22,4 @@ const App = StackNavigator({
         headerMode: 'screen'
     });
 
-export default App;
+export default createAppContainer(App);
