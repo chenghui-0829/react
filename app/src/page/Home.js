@@ -3,7 +3,9 @@ import {
     StyleSheet,
     View,
     Text,
-    Image
+    Image,
+    Button,
+    TouchableOpacity
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 
@@ -49,11 +51,13 @@ class Home extends React.Component {
                         </View>
                     </Swiper>
                 </View>
-                <View style={styles.gameType}>
-                    <Image style={{width: 50, height: 50}}
-                           source={require('../static/img/db_icon.png')}/>
-                    <Text style={styles.gameName}>夺宝</Text>
-                </View>
+                <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('DbLists')}>
+                    <View style={styles.gameType}>
+                        <Image style={{width: 50, height: 50}}
+                               source={require('../static/img/db_icon.png')}/>
+                        <Text style={styles.gameName}>夺宝</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }
