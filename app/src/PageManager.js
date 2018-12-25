@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {TabNav} from "./menu";
 import DbList from "./page/DbList";
+import BackImage from "./component/BackImage";
 
 const App = createStackNavigator(
     {
@@ -11,7 +12,7 @@ const App = createStackNavigator(
         DbLists: {
             screen: DbList,
             navigationOptions: () => ({
-                headerBackImage: require('../static/img/menu_home_select_icon.png')
+                headerBackImage: <BackImage/>
             })
         }
     },

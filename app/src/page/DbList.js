@@ -3,7 +3,8 @@ import {
     StyleSheet,
     View,
     Text,
-    Button
+    Image,
+    FlatList
 } from 'react-native';
 
 class DbList extends React.Component {
@@ -20,7 +21,15 @@ class DbList extends React.Component {
     render() {
         return (
             <View>
-                <Text>夺宝页面</Text>
+                <FlatList
+                    renderItem={({item, index}) => {
+                        return (
+                            <TouchableOpacity activeOpacity={0.6}>
+                                <Image source={require('../static/img/btc_icon.png')}/>
+                            </TouchableOpacity>
+                        );
+                    }}
+                />
             </View>
         );
     }
