@@ -6,11 +6,14 @@ import {
     Image,
     FlatList
 } from 'react-native';
+import BackImage from "../component/BackImage";
 
-class DbList extends React.Component {
+class DbPage extends React.Component {
 
     static navigationOptions = {
         title: '夺宝',
+        headerRight: <View/>,
+        headerBackImage: <BackImage/>
     };
 
     constructor(props) {
@@ -36,4 +39,4 @@ class DbList extends React.Component {
 }
 
 const styles = StyleSheet.create({});
-export default DbList;
+export default DbPage;

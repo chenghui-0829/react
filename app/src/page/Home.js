@@ -37,27 +37,51 @@ class Home extends React.Component {
                         dot={<View style={styles.dot}/>}
                         activeDot={<View style={styles.activeDot}/>}
                         autoplayTimeout={2.5}>
-                        <View style={styles.slide1}>
+                        <View>
                             <Image style={{width: '100%', height: '100%'}}
                                    source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545390817367&di=fc1a8ba94ecf6c6f6aa3368e6beedc79&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F8%2F582283bc16790.jpg'}}/>
                         </View>
-                        <View style={styles.slide2}>
+                        <View>
                             <Image style={{width: '100%', height: '100%'}}
                                    source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545390856012&di=0336639349aa3799f25d1d9c8de8f2a7&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fc9fcc3cec3fdfc035a9f2f95df3f8794a4c2263c.jpg'}}/>
                         </View>
-                        <View style={styles.slide3}>
+                        <View>
                             <Image style={{width: '100%', height: '100%'}}
                                    source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545390933249&di=f0818c27e2693c594651cda883fd4261&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D3624525885%2C3959898217%26fm%3D214%26gp%3D0.jpg'}}/>
                         </View>
                     </Swiper>
                 </View>
-                <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('DbLists')}>
-                    <View style={styles.gameType}>
-                        <Image style={{width: 50, height: 50}}
-                               source={require('../static/img/db_icon.png')}/>
-                        <Text style={styles.gameName}>夺宝</Text>
-                    </View>
-                </TouchableOpacity>
+
+                <View style={styles.games}>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('Cj')}>
+                        <View style={styles.gameType}>
+                            <Image style={{width: 50, height: 50}}
+                                   source={require('../static/img/cj_icon.jpg')}/>
+                            <Text style={styles.gameName}>抽奖</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('Pk')}>
+                        <View style={styles.gameType}>
+                            <Image style={{width: 50, height: 50}}
+                                   source={require('../static/img/pk_icon.jpg')}/>
+                            <Text style={styles.gameName}>PK</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('ExChange')}>
+                        <View style={styles.gameType}>
+                            <Image style={{width: 50, height: 50}}
+                                   source={require('../static/img/exchange_icon.jpg')}/>
+                            <Text style={styles.gameName}>交换</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('Db')}>
+                        <View style={styles.gameType}>
+                            <Image style={{width: 50, height: 50}}
+                                   source={require('../static/img/db_icon.jpg')}/>
+                            <Text style={styles.gameName}>夺宝</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -87,13 +111,18 @@ const styles = StyleSheet.create({
         marginRight: 3,
     },
     gameType: {
-        marginTop: 10,
+        marginTop: 20,
         alignItems: 'center'
     },
     gameName: {
         fontSize: 14,
         marginTop: 10,
         color: '#333'
+    },
+    games: {
+        flex: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     }
 });
 export default Home;

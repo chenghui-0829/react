@@ -13,11 +13,19 @@ class BackImage extends React.Component {
     render() {
         return (
             <Image
+                style={styles.back}
                 source={require('../static/img/back_icon.png')}
             />
         );
     }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+    back: {
+        height: 25,
+        width: 25
+    }
+
+});
 export default BackImage;

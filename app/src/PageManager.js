@@ -1,20 +1,18 @@
 import React from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {TabNav} from "./menu";
-import DbList from "./page/DbList";
-import BackImage from "./component/BackImage";
+import DbPage from "./page/DbPage";
+import CjPage from "./page/CjPage";
+import PkPage from "./page/PkPage";
+import ExChangePage from "./page/ExChangePage";
 
 const App = createStackNavigator(
     {
-        Main: {
-            screen: TabNav,
-        },
-        DbLists: {
-            screen: DbList,
-            navigationOptions: () => ({
-                headerBackImage: <BackImage/>
-            })
-        }
+        Main: TabNav,
+        Db: DbPage,
+        Cj: CjPage,
+        Pk: PkPage,
+        ExChange: ExChangePage
     },
     {
         initialRouteName: 'Main',
@@ -30,7 +28,7 @@ const App = createStackNavigator(
                 fontSize: 16,
                 fontWeight: 'normal',
             },
-        },
+        }
     }
 );
 
