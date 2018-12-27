@@ -5,6 +5,7 @@ import DbPage from "./page/DbPage";
 import CjPage from "./page/CjPage";
 import PkPage from "./page/PkPage";
 import ExChangePage from "./page/ExChangePage";
+import AddCjPage from "./page/AddCjPage";
 
 const App = createStackNavigator(
     {
@@ -12,7 +13,8 @@ const App = createStackNavigator(
         Db: DbPage,
         Cj: CjPage,
         Pk: PkPage,
-        ExChange: ExChangePage
+        ExChange: ExChangePage,
+        AddCjPage:AddCjPage
     },
     {
         initialRouteName: 'Main',
