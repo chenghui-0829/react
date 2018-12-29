@@ -6,7 +6,7 @@ import {
     TextInput,
     Button
 } from 'react-native';
-import BackImage from "../component/BackImage";
+import BackImage from "../../component/BackImage";
 
 class AddCjPage extends React.Component {
 
@@ -19,27 +19,38 @@ class AddCjPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            useTel: '',
             cjztText: '',
             jpnrText: '',
             cytjText: ''
         }
     }
 
-    tjEvent = () => {
-        let url = 'http://localhost:8080/createCj';
+    tjEvent = async () => {
+
+        await storage.load({
+            key: 'userTel'
+        }).then(result => {
+            console.log(result)
+            this.setState({useTel: result.tel})
+        }).catch(e => {
+            console.log(e)
+        });
+
+        let url = 'http://192.168.1.199:8080/createCj';
         let params = new FormData();
         params.append("cjzt", this.state.cjztText);
         params.append("jpnr", this.state.jpnrText);
         params.append("cytj", this.state.cytjText);
-        params.append("creatTime", new Date());
-
+        params.append("fqUser", this.state.useTel);
         fetch(url, {
             method: 'POST',
             body: params
-        }).then(result => {
+        }).then((response) =>
+            response.json()
+        ).then((result) => {
             console.log(result)
         }).catch(e => {
-
             console.log(e)
         })
 

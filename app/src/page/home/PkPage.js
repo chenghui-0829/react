@@ -4,9 +4,9 @@ import {
     View,
     Text
 } from 'react-native';
-import BackImage from "../component/BackImage";
+import BackImage from "../../component/BackImage";
 
-class ExChangePage extends React.Component {
+class PkPage extends React.Component {
 
     static navigationOptions = {
         title: '交换',
@@ -28,4 +28,4 @@ class ExChangePage extends React.Component {
 }
 
 const styles = StyleSheet.create({});
-export default ExChangePage;
+export default PkPage;

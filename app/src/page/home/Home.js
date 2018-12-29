@@ -16,7 +16,7 @@ class Home extends React.Component {
         tabBarLabel: '首页',
         tabBarIcon: ({focused}) => (
             <Image
-                source={focused ? require('../static/img/menu_home_select_icon.png') : require('../static/img/menu_home_icon.png')}
+                source={focused ? require('../../static/img/menu_home_select_icon.png') : require('../../static/img/menu_home_icon.png')}
                 style={{width: 20, height: 20}}/>
         )
     };
@@ -56,28 +56,28 @@ class Home extends React.Component {
                     <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('Cj')}>
                         <View style={styles.gameType}>
                             <Image style={{width: 50, height: 50}}
-                                   source={require('../static/img/cj_icon.jpg')}/>
+                                   source={require('../../static/img/cj_icon.jpg')}/>
                             <Text style={styles.gameName}>抽奖</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('Pk')}>
                         <View style={styles.gameType}>
                             <Image style={{width: 50, height: 50}}
-                                   source={require('../static/img/pk_icon.jpg')}/>
+                                   source={require('../../static/img/pk_icon.jpg')}/>
                             <Text style={styles.gameName}>PK</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('ExChange')}>
                         <View style={styles.gameType}>
                             <Image style={{width: 50, height: 50}}
-                                   source={require('../static/img/exchange_icon.jpg')}/>
+                                   source={require('../../static/img/exchange_icon.jpg')}/>
                             <Text style={styles.gameName}>交换</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={1} onPress={() => this.props.navigation.push('Db')}>
                         <View style={styles.gameType}>
                             <Image style={{width: 50, height: 50}}
-                                   source={require('../static/img/db_icon.jpg')}/>
+                                   source={require('../../static/img/db_icon.jpg')}/>
                             <Text style={styles.gameName}>夺宝</Text>
                         </View>
                     </TouchableOpacity>

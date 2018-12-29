@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {createBottomTabNavigator} from 'react-navigation';
 
-import HomePage from './page/Home';
-import OpenPage from './page/Open';
-import MinePage from './page/Mine';
+import HomePage from './page/home/Home';
+import OpenPage from './page/open/Open';
+import MinePage from './page/mine/Mine';
 
 export const TabNav = createBottomTabNavigator(
     {

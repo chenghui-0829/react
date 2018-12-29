@@ -1,11 +1,13 @@
 import React from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {TabNav} from "./menu";
-import DbPage from "./page/DbPage";
-import CjPage from "./page/CjPage";
-import PkPage from "./page/PkPage";
-import ExChangePage from "./page/ExChangePage";
-import AddCjPage from "./page/AddCjPage";
+import DbPage from "./page/home/DbPage";
+import CjPage from "./page/home/CjPage";
+import PkPage from "./page/home/PkPage";
+import ExChangePage from "./page/home/ExChangePage";
+import AddCjPage from "./page/home/AddCjPage";
+import Login from "./page/mine/Login";
+import "./utils/Storage"
 
 const App = createStackNavigator(
     {
@@ -14,7 +16,8 @@ const App = createStackNavigator(
         Cj: CjPage,
         Pk: PkPage,
         ExChange: ExChangePage,
-        AddCjPage:AddCjPage
+        AddCjPage: AddCjPage,
+        Login: Login
     },
     {
         initialRouteName: 'Main',

@@ -6,7 +6,7 @@ import {
     Image,
     FlatList
 } from 'react-native';
-import BackImage from "../component/BackImage";
+import BackImage from "../../component/BackImage";
 
 class DbPage extends React.Component {
 
@@ -28,7 +28,7 @@ class DbPage extends React.Component {
                     renderItem={({item, index}) => {
                         return (
                             <TouchableOpacity activeOpacity={0.6}>
-                                <Image source={require('../static/img/btc_icon.png')}/>
+                                <Image source={require('../../static/img/btc_icon.png')}/>
                             </TouchableOpacity>
                         );
                     }}
