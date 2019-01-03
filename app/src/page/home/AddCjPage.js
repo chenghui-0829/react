@@ -31,7 +31,6 @@ class AddCjPage extends React.Component {
         await storage.load({
             key: 'userTel'
         }).then(result => {
-            console.log(result)
             this.setState({useTel: result.tel})
         }).catch(e => {
             console.log(e)
@@ -50,6 +49,10 @@ class AddCjPage extends React.Component {
             response.json()
         ).then((result) => {
             console.log(result)
+            if (result.code === 200) {
+                this.props.navigation.goBack();
+                this.props.navigation.state.params.callBack();
+            }
         }).catch(e => {
             console.log(e)
         })

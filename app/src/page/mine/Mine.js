@@ -30,11 +30,9 @@ class Mine extends React.Component {
                                   onPress={() => this.props.navigation.push('Login')}>
                     <View style={styles.user_view}>
 
-                        <View style={{width: 80, height: 80, borderRadius: 40}}>
-                            <Image roundAsCircle={true} style={styles.head_image}
-                                   source={{uri: 'http://www.17qq.com/img_qqtouxiang/81272201.jpeg'}}
-                            />
-                        </View>
+                        <Image roundAsCircle={true} style={styles.head_image}
+                               source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546491801057&di=e7121bd39b3482021ec60e24e0f01c48&imgtype=0&src=http%3A%2F%2Fimg2.woyaogexing.com%2F2017%2F07%2F24%2F555e89e7e6384180%2521600x600.jpg'}}
+                        />
                         <View style={{marginLeft: 12}}>
                             {/*<Text>要做的蛮多</Text>*/}
                             {/*<Text>15927299226</Text>*/}
@@ -60,7 +58,6 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 40,
-        backgroundColor: '#ff0000',
         resizeMode: 'cover',
     }
 });
