@@ -33,20 +33,7 @@ class CjPage extends React.Component {
 
     componentDidMount() {
         this.props.navigation.setParams({navigatePress: this.addCjEvent})
-        let url = 'http://192.168.1.199:8080/getCjList';
-        fetch(url, {
-            method: 'GET'
-        }).then(response =>
-            response.json()
-        ).then(result => {
-            console.log(result)
-            this.setState({
-                data: result.data
-            })
-        }).catch(e => {
-            console.log(e)
-        })
-
+        this.initData();
     }
 
     initData = () => {
@@ -67,11 +54,10 @@ class CjPage extends React.Component {
 
 
     addCjEvent = () => {
-        this.props.navigation.push('AddCjPage');
-
+        let _that = this;
         this.props.navigation.navigate("AddCjPage", {
             callBack: function () {
-                this.initData
+                _that.initData();
             }
         });
     };

@@ -50,8 +50,8 @@ class AddCjPage extends React.Component {
         ).then((result) => {
             console.log(result)
             if (result.code === 200) {
-                this.props.navigation.goBack();
                 this.props.navigation.state.params.callBack();
+                this.props.navigation.goBack();
             }
         }).catch(e => {
             console.log(e)
