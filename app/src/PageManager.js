@@ -8,6 +8,7 @@ import ExChangePage from "./page/home/ExChangePage";
 import AddCjPage from "./page/home/AddCjPage";
 import Login from "./page/mine/Login";
 import "./utils/Storage"
+import CjDetailsPage from "./page/home/CjDetailsPage";
 
 const App = createStackNavigator(
     {
@@ -17,7 +18,8 @@ const App = createStackNavigator(
         Pk: PkPage,
         ExChange: ExChangePage,
         AddCjPage: AddCjPage,
-        Login: Login
+        Login: Login,
+        CjDetailsPage: CjDetailsPage
     },
     {
         initialRouteName: 'Main',

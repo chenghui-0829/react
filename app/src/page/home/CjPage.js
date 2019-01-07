@@ -70,7 +70,8 @@ class CjPage extends React.Component {
                     keyExtractor={(item, index) => item.cjId.toString()}
                     renderItem={({item, index}) => {
                         return (
-                            <TouchableOpacity activeOpacity={0.6} style={styles.item}>
+                            <TouchableOpacity activeOpacity={0.6} style={styles.item}
+                                              onPress={() => this.props.navigation.push('CjDetailsPage')}>
                                 <View style={styles.item_top}>
                                     <Image style={styles.head_image}
                                            source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546491801057&di=e7121bd39b3482021ec60e24e0f01c48&imgtype=0&src=http%3A%2F%2Fimg2.woyaogexing.com%2F2017%2F07%2F24%2F555e89e7e6384180%2521600x600.jpg'}}
@@ -89,7 +90,6 @@ class CjPage extends React.Component {
                 />
             </View>
         )
-
     }
 }
 
