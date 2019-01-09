@@ -38,7 +38,7 @@ class CjPage extends React.Component {
     }
 
     initData = () => {
-        let url = 'http://192.168.1.199:8080/getCjList';
+        let url = '/getCjList';
         HttpUtil.get(url, null, (result) => {
             this.setState({
                 data: result.data

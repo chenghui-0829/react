@@ -22,7 +22,7 @@ class Login extends React.Component {
 //     console.log(result)
 //
     login = () => {
-        let url = 'http://192.168.1.199:8080/login';
+        let url = '/login';
         let params = {"tel": this.state.tel};
         HttpUtil.get(url, params, (result) => {
             if (result.code === 200) {

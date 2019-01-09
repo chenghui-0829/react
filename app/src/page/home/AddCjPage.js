@@ -38,7 +38,8 @@ class AddCjPage extends React.Component {
         });
 
 
-        let url = 'http://192.168.1.199:8080/createCj';
+        let url = '/createCj';
+
         let params = new FormData();
         params.append("cjzt", this.state.cjztText);
         params.append("jpnr", this.state.jpnrText);

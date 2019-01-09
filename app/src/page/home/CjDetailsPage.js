@@ -25,6 +25,7 @@ class CjDetailsPage extends React.Component {
         super(props);
         this.state = {
             useTel: '',
+            data: ''
         }
     }
 
@@ -34,9 +35,14 @@ class CjDetailsPage extends React.Component {
     }
 
     getCjDetails = () => {
-        let url = 'http://192.168.1.199:8080/getCjDetails';
+        let url = '/getCjDetails';
         let params = {"cjId": cjid};
         HttpUtil.get(url, params, (result) => {
+            this.setState(
+                {
+                    data: result.data
+                }
+            )
         })
     };
 
@@ -49,7 +55,7 @@ class CjDetailsPage extends React.Component {
         }).catch(e => {
             console.log(e)
         });
-        let url = 'http://192.168.1.199:8080/joinCj';
+        let url = '/joinCj';
         let params = {"tel": this.state.useTel, "cjid": cjid};
         HttpUtil.get(url, params, () => {
 
@@ -65,22 +71,24 @@ class CjDetailsPage extends React.Component {
                                source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546491801057&di=e7121bd39b3482021ec60e24e0f01c48&imgtype=0&src=http%3A%2F%2Fimg2.woyaogexing.com%2F2017%2F07%2F24%2F555e89e7e6384180%2521600x600.jpg'}}
                         />
                         <View style={{marginLeft: 10}}>
-                            <Text style={{fontSize: 16}}>123</Text>
-                            <Text style={{fontSize: 12}}>456</Text>
+                            <Text style={{fontSize: 16}}>{this.state.data.fqUser}</Text>
+                            <Text style={{fontSize: 12}}>{this.state.data.creatTime}</Text>
                         </View>
                         <Text style={{fontSize: 14, color: '#ff0000', marginLeft: 'auto'}}> 进行中</Text>
                     </View>
-                    <Text style={{marginTop: 10}}>抽奖主题: </Text>
-                    <Text style={{marginTop: 10}}>奖品内容: </Text>
+                    <Text style={{marginTop: 10}}>抽奖主题:{this.state.data.cjzt}</Text>
+                    <Text style={{marginTop: 10}}>奖品内容: {this.state.data.jpnr}</Text>
                 </View>
 
                 <View style={styles.cyjl_view}>
                     <Text>参与记录:</Text>
-                    <Text style={{marginLeft: 10, color: 'red'}}>未参与</Text>
+                    <Text style={{marginLeft: 10, color: 'red'}}>{this.state.data.isJoin==null?'未参与':'已参与'}</Text>
                 </View>
 
                 <Text style={{backgroundColor: '#ffffff', padding: 12, marginTop: 10}}>最新参与</Text>
                 <FlatList
+                    data={this.state.data.cjUsers}
+                    keyExtractor={(item, index) => item.userInfo.uid}
                     renderItem={({item, index}) => {
                         return (
                             <View style={styles.item_top}>
@@ -88,8 +96,8 @@ class CjDetailsPage extends React.Component {
                                        source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546491801057&di=e7121bd39b3482021ec60e24e0f01c48&imgtype=0&src=http%3A%2F%2Fimg2.woyaogexing.com%2F2017%2F07%2F24%2F555e89e7e6384180%2521600x600.jpg'}}
                                 />
                                 <View style={{marginLeft: 10}}>
-                                    <Text style={{fontSize: 16}}>{123}</Text>
-                                    <Text style={{fontSize: 12}}> {123}</Text>
+                                    <Text style={{fontSize: 16}}>{item.userInfo.tel}</Text>
+                                    <Text style={{fontSize: 12}}> {item.time}</Text>
                                 </View>
                             </View>
                         );
@@ -111,7 +119,9 @@ const styles = StyleSheet.create({
     },
     item_top: {
         flex: 0,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        padding: 10,
+        backgroundColor: '#ffffff'
     },
     cyjl_view: {
         marginTop: 10,
@@ -123,7 +133,6 @@ const styles = StyleSheet.create({
     ljcy_text: {
         backgroundColor: 'red',
         padding: 12,
-        marginTop: 10,
         color: '#ffffff',
         textAlign: 'center',
         flex: 0,

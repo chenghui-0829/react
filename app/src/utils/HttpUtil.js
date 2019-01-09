@@ -18,9 +18,14 @@ const requestUrl = (url, params) => {
 };
 
 
+const baseUrl = 'http://192.168.1.4:8080';
+
 export default class HttpUtil {
 
     static get(url, params, succss, failure) {
+
+        url = baseUrl + url;
+
         if (params) {
             let paramsArray = [];
             Object.keys(params).forEach(key => paramsArray.push(key + '=' + encodeURIComponent(params[key])));
@@ -43,6 +48,8 @@ export default class HttpUtil {
     }
 
     static post(url, params, succss, failure) {
+        url = baseUrl + url;
+
         fetch(url, {
             method: 'POST',
             body: params
