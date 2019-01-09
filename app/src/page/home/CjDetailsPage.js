@@ -8,9 +8,11 @@ import {
 } from 'react-native';
 
 import BackImage from "../../component/BackImage";
+import HttpUtil from "../../utils/HttpUtil";
+
+let cjid = 0;
 
 class CjDetailsPage extends React.Component {
-
 
     static navigationOptions = {
 
@@ -21,23 +23,37 @@ class CjDetailsPage extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            useTel: '',
+        }
     }
 
-    joinCj = () => {
-        let url = 'http://192.168.1.199:8080/getCjList';
-        fetch(url, {
-            method: 'GET'
-        }).then(response =>
-            response.json()
-        ).then(result => {
-            console.log(result)
-            this.setState({
-                data: result.data
-            })
+    componentDidMount() {
+        cjid = this.props.navigation.state.params.cjId;
+        this.getCjDetails();
+    }
+
+    getCjDetails = () => {
+        let url = 'http://192.168.1.199:8080/getCjDetails';
+        let params = {"cjId": cjid};
+        HttpUtil.get(url, params, (result) => {
+        })
+    };
+
+    joinCj = async () => {
+
+        await storage.load({
+            key: 'userTel'
+        }).then(result => {
+            this.setState({useTel: result.tel})
         }).catch(e => {
             console.log(e)
-        })
+        });
+        let url = 'http://192.168.1.199:8080/joinCj';
+        let params = {"tel": this.state.useTel, "cjid": cjid};
+        HttpUtil.get(url, params, () => {
+
+        });
     };
 
     render() {
@@ -79,7 +95,7 @@ class CjDetailsPage extends React.Component {
                         );
                     }}
                 />
-                <Text style={styles.ljcy_text}>立即参与</Text>
+                <Text style={styles.ljcy_text} onPress={this.joinCj}>立即参与</Text>
             </View>
         );
     }

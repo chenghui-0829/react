@@ -8,6 +8,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import BackImage from "../../component/BackImage";
+import HttpUtil from "../../utils/HttpUtil";
 
 class CjPage extends React.Component {
 
@@ -38,18 +39,11 @@ class CjPage extends React.Component {
 
     initData = () => {
         let url = 'http://192.168.1.199:8080/getCjList';
-        fetch(url, {
-            method: 'GET'
-        }).then(response =>
-            response.json()
-        ).then(result => {
-            console.log(result)
+        HttpUtil.get(url, null, (result) => {
             this.setState({
                 data: result.data
             })
-        }).catch(e => {
-            console.log(e)
-        })
+        });
     };
 
 
@@ -71,7 +65,7 @@ class CjPage extends React.Component {
                     renderItem={({item, index}) => {
                         return (
                             <TouchableOpacity activeOpacity={0.6} style={styles.item}
-                                              onPress={() => this.props.navigation.push('CjDetailsPage')}>
+                                              onPress={() => this.props.navigation.push('CjDetailsPage', {cjId: item.cjId})}>
                                 <View style={styles.item_top}>
                                     <Image style={styles.head_image}
                                            source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546491801057&di=e7121bd39b3482021ec60e24e0f01c48&imgtype=0&src=http%3A%2F%2Fimg2.woyaogexing.com%2F2017%2F07%2F24%2F555e89e7e6384180%2521600x600.jpg'}}

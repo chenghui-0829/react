@@ -6,6 +6,7 @@ import {
     Image,
     TextInput
 } from 'react-native';
+import HttpUtil from "../../utils/HttpUtil";
 
 class Login extends React.Component {
     constructor(props) {
@@ -21,12 +22,9 @@ class Login extends React.Component {
 //     console.log(result)
 //
     login = () => {
-        let url = 'http://192.168.1.199:8080/login?tel=';
-        fetch(url + this.state.tel, {
-            method: 'GET',
-        }).then((response) =>
-            response.json()
-        ).then((result) => {
+        let url = 'http://192.168.1.199:8080/login';
+        let params = {"tel": this.state.tel};
+        HttpUtil.get(url, params, (result) => {
             if (result.code === 200) {
                 storage.save({
                     key: 'userTel',
@@ -36,9 +34,7 @@ class Login extends React.Component {
                 });
                 this.props.navigation.goBack();
             }
-        }).catch(e => {
-            console.log(e)
-        })
+        });
     };
 
     render() {

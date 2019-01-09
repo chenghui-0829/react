@@ -7,6 +7,7 @@ import {
     Button
 } from 'react-native';
 import BackImage from "../../component/BackImage";
+import HttpUtil from "../../utils/HttpUtil";
 
 class AddCjPage extends React.Component {
 
@@ -36,27 +37,20 @@ class AddCjPage extends React.Component {
             console.log(e)
         });
 
+
         let url = 'http://192.168.1.199:8080/createCj';
         let params = new FormData();
         params.append("cjzt", this.state.cjztText);
         params.append("jpnr", this.state.jpnrText);
         params.append("cytj", this.state.cytjText);
         params.append("fqUser", this.state.useTel);
-        fetch(url, {
-            method: 'POST',
-            body: params
-        }).then((response) =>
-            response.json()
-        ).then((result) => {
-            console.log(result)
+
+        HttpUtil.post(url, params, (result) => {
             if (result.code === 200) {
                 this.props.navigation.state.params.callBack();
                 this.props.navigation.goBack();
             }
-        }).catch(e => {
-            console.log(e)
-        })
-
+        });
     };
 
     render() {
